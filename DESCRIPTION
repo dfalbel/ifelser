@@ -1,0 +1,12 @@
+Package: ifelser
+Type: Package
+Title: Piping If Else Statements
+Version: 0.0.0.9000
+Date: 2015-04-23
+Author: Daniel Falbel
+Maintainer: Daniel Falbel <dfalbel@gmail.com>
+Description: Make If Else statements easier.
+License: MIT
+LazyData: TRUE
+Suggests: testthat
+Depends: magrittr
