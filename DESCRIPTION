@@ -8,5 +8,7 @@ Maintainer: Daniel Falbel <dfalbel@gmail.com>
 Description: Make If Else statements easier.
 License: MIT
 LazyData: TRUE
-Suggests: testthat
+Suggests: testthat,
+    knitr
 Depends: magrittr
+VignetteBuilder: knitr
