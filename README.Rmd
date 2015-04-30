@@ -4,6 +4,8 @@ output:
     variant: markdown_github
 ---
 
+## ifelser: package for more readable ifelse statements in R
+
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,

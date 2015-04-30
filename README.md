@@ -1,3 +1,6 @@
+ifelser: package for more readable ifelse statements in R
+---------------------------------------------------------
+
 If you ever had to make ifelse statements one inside of each other, this package will be usefull for you.
 
 Think about the following code:
