@@ -1,6 +1,6 @@
 ---
 title: "Usage of Ifelser"
-author: "Daneil Falbel"
+author: "Daniel Falbel"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -9,50 +9,25 @@ vignette: >
   \usepackage[utf8]{inputenc}
 ---
 
-Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The `html_vignette` format:
+ifelser is an R package created to make nested ifelse statements easier and in modern R way to write code.
 
-- Never uses retina figures
-- Has a smaller default figure size
-- Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style
+## Simple ifelse statement
 
-## Vignette Info
+A simple vectorized ifelse statement can be done like this with `ifelser`
 
-Note the various macros within the `vignette` setion of the metadata block above. These are required in order to instruct R how to build the vignette. Note that you should change the `title` field and the `\VignetteIndexEntry` to match the title of your vignette.
-
-## Styles
-
-The `html_vignette` template includes a basic CSS theme. To override this theme you can specify your own CSS in the document metadata as follows:
-
-    output: 
-      rmarkdown::html_vignette:
-        css: mystyles.css
-
-## Figures
-
-The figure sizes have been customised so that you can easily put two images side-by-side. 
-
-```{r, fig.show='hold'}
-plot(1:10)
-plot(10:1)
+```{r}
+library(ifelser)
+x <- 1:10
+test_if(x > 5) %>% if_true(1) %>% if_false(0)
 ```
 
-You can enable figure captions by `fig_caption: yes` in YAML:
+## More complicated statements
 
-    output:
-      rmarkdown::html_vignette:
-        fig_caption: yes
+Sometimes you want to nest statments. This can be done using the following commands:
 
-Then you can use the chunk option `fig.cap = "Your figure caption."` in **knitr**.
-
-## More Examples
-
-You can write math expressions, e.g. $Y = X\beta + \epsilon$, footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`.
-
-```{r, echo=FALSE, results='asis'}
-knitr::kable(head(mtcars, 10))
+```{r}
+test_if(x>5) %>% if_true(1) %>% if_false() %>% 
+  test_if(x<2) %>% if_true(5) %>% if_false(0)
 ```
 
-Also a quote using `>`:
-
-> "He who gives up [code] safety for [code] speed deserves neither."
-([via](https://twitter.com/hadleywickham/status/504368538874703872))
+If you ommit `if_false` or `if_true` arguments, `ifelser` will wait for another call for `test_if`, meaning that you want to nest an ifelse statement. This can be done how many times you want.
