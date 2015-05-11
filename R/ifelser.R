@@ -81,6 +81,13 @@ if_false <- function(lst, no = NULL){
 #test_if(2>3) %>% if_true(2) %>% if_false() %>% test_if(2==2) %>% if_true(100) %>% if_false(101)
 
 
+#' A more readable function to continue test_if statements
+#'
+#' @export
+if_false_then <- function(lst){
+  if_false(lst)
+}
+
 #' Create ifelse call
 #'
 #' @param lst a chained ifelse statement using ifelser structure
