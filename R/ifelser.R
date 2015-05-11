@@ -84,8 +84,8 @@ if_false <- function(lst, no = NULL){
 #' A more readable function to continue test_if statements
 #'
 #' @export
-if_false_then <- function(...){
-  if_false()
+if_false_then <- function(lst){
+  if_false(lst)
 }
 
 #' Create ifelse call
