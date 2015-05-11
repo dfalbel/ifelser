@@ -13,8 +13,9 @@ test_if <- function(...){
 #' @export
 #' @import magrittr
 test_if.logical <- function(test){
+
   list(
-    test = substitute(test) %>% deparse,
+    test = substitute(test) %>% deparse %>% paste(collapse = ""),
     env = parent.frame()
   )
 }
@@ -29,7 +30,7 @@ test_if.logical <- function(test){
 test_if.default <- function(lst, test){
    list(
      lst = lst,
-     test = substitute(test) %>% deparse
+     test = substitute(test) %>% deparse %>% paste(collapse = "")
    )
 }
 
@@ -43,7 +44,7 @@ test_if.default <- function(lst, test){
 #' @import magrittr
 if_true <- function(lst, yes = NULL){
   if(!is.null(yes)){
-    lst$yes <- substitute(yes) %>% deparse()
+    lst$yes <- substitute(yes) %>% deparse() %>% paste(collapse = "")
     if(!is.null(lst$no)){
       call <- create_call(lst)
       return(eval(call$expr, envir = call$env)  )
@@ -64,7 +65,7 @@ if_true <- function(lst, yes = NULL){
 #' @import magrittr
 if_false <- function(lst, no = NULL){
   if(!is.null(no)){
-    lst$no = substitute(no) %>% deparse()
+    lst$no = substitute(no) %>% deparse() %>% paste(collapse = "")
     if(!is.null(lst$yes)){
       call <- create_call(lst)
       return(eval(call$expr, envir = call$env) )
@@ -75,11 +76,6 @@ if_false <- function(lst, no = NULL){
     return(lst)
   }
 }
-
-# test_if(list(x = "1"), 1)
-
-#test_if(2>3) %>% if_true(2) %>% if_false() %>% test_if(2==2) %>% if_true(100) %>% if_false(101)
-
 
 #' A more readable function to continue test_if statements
 #'
@@ -119,11 +115,3 @@ create_call <- function(lst){
     )
   )
 }
-
-
-
-
-
-
-
-
