@@ -4,7 +4,7 @@
 \alias{if_false_then}
 \title{A more readable function to continue test_if statements}
 \usage{
-if_false_then()
+if_false_then(...)
 }
 \description{
 A more readable function to continue test_if statements
