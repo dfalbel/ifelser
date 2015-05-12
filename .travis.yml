@@ -15,5 +15,7 @@ notifications:
 
 r_github_packages:
   - jimhester/covr
+  - hadley/dplyr
+
 after_success:
   - Rscript -e 'library(covr);coveralls()'
